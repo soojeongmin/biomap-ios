@@ -1,0 +1,16 @@
+# Xcode / Swift / iOS
+.DS_Store
+build/
+build-*/
+DerivedData/
+dist/
+*.ipa
+*.xcarchive
+*.xcuserstate
+*.xcuserdatad
+xcuserdata/
+.swiftpm/
+Pods/
+*.moved-aside
+*.hmap
+*.dSYM/

@@ -1,0 +1,58 @@
+name: BioMap
+options:
+  bundleIdPrefix: com.soojeongmin
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: "11.4.0"
+  GoogleSignIn:
+    url: https://github.com/google/GoogleSignIn-iOS
+    from: "7.1.0"
+targets:
+  BioMap:
+    type: application
+    platform: iOS
+    sources:
+      - path: BioMap
+        excludes:
+          - Info.plist
+          - BioMap.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.soojeongmin.biomap
+        MARKETING_VERSION: "1.17.0"
+        CURRENT_PROJECT_VERSION: "30"
+        INFOPLIST_FILE: BioMap/Info.plist
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: "NO"
+        SWIFT_VERSION: "5.0"
+        DEVELOPMENT_LANGUAGE: ko
+        ENABLE_USER_SCRIPT_SANDBOXING: "NO"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: CXF2JL57D8
+        CODE_SIGN_ENTITLEMENTS: BioMap/BioMap.entitlements
+      configs:
+        Debug:
+          APS_ENVIRONMENT: development
+        Release:
+          APS_ENVIRONMENT: production
+    dependencies:
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: Firebase
+        product: FirebaseStorage
+      - package: Firebase
+        product: FirebaseFunctions
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: Firebase
+        product: FirebaseAppCheck
+      - package: GoogleSignIn
+        product: GoogleSignIn
+      - package: GoogleSignIn
+        product: GoogleSignInSwift
