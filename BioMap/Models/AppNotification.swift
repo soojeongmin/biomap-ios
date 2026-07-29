@@ -50,6 +50,7 @@ enum NotifDestination: Equatable {
     case duels
     case dm(String)
     case observation(String)
+    case add
 
     static func fromPush(route: String?, obs: String?, peer: String?) -> NotifDestination? {
         switch route {

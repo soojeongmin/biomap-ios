@@ -31,6 +31,7 @@ struct AppUser: Codable, Identifiable, Hashable {
     var blockedUids: [String] = []
     var guildChatMuted: Bool = false
     var dmMuted: Bool = false
+    var streak: Int = 0
 
     var id: String { uid }
 
@@ -45,7 +46,7 @@ struct AppUser: Codable, Identifiable, Hashable {
          ownedEmojis: [String] = [], ownedBgs: [String] = [],
          avatarEffect: String = "none", avatarNameColor: String = "",
          ownedEffects: [String] = [], ownedNameColors: [String] = [],
-         blockedUids: [String] = [], guildChatMuted: Bool = false, dmMuted: Bool = false) {
+         blockedUids: [String] = [], guildChatMuted: Bool = false, dmMuted: Bool = false, streak: Int = 0) {
         self.uid = uid; self.name = name; self.photoUrl = photoUrl; self.teamId = teamId
         self.teamJoinedAt = teamJoinedAt
         self.pendingTeamId = pendingTeamId
@@ -62,6 +63,7 @@ struct AppUser: Codable, Identifiable, Hashable {
         self.blockedUids = blockedUids
         self.guildChatMuted = guildChatMuted
         self.dmMuted = dmMuted
+        self.streak = streak
     }
 
     init(firestore d: [String: Any], id: String) {
@@ -95,7 +97,8 @@ struct AppUser: Codable, Identifiable, Hashable {
             ownedNameColors: d["ownedNameColors"] as? [String] ?? [],
             blockedUids: d["blockedUids"] as? [String] ?? [],
             guildChatMuted: d["guildChatMuted"] as? Bool ?? false,
-            dmMuted: d["dmMuted"] as? Bool ?? false
+            dmMuted: d["dmMuted"] as? Bool ?? false,
+            streak: (d["streak"] as? NSNumber)?.intValue ?? 0
         )
     }
 }

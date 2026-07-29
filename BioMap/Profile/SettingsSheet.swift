@@ -13,6 +13,15 @@ struct SettingsSheet: View {
     @State private var loadedMuted = false
     @State private var latestVersion: String?
     @State private var showCacheCleared = false
+    @State private var showRedeem = false
+    @State private var redeemCode = ""
+    @State private var redeemMsg = ""
+    @State private var showRedeemResult = false
+
+    private var myInviteCode: String { UserRepository.referralCode(for: Auth.auth().currentUser?.uid ?? "") }
+    private var inviteText: String {
+        String(format: NSLocalizedString("invite_share_text", comment: ""), myInviteCode) + " " + (AppVersion.storeURL?.absoluteString ?? "")
+    }
 
     private var currentVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
@@ -63,6 +72,23 @@ struct SettingsSheet: View {
                     Button { openSystemSettings() } label: { settingsRow("settings_notifications", "bell.fill") }
                 } footer: {
                     Text("settings_open_system")
+                }
+                Section {
+                    HStack {
+                        Text("invite_my_code")
+                        Spacer()
+                        Text(myInviteCode)
+                            .font(.system(.body, design: .monospaced).weight(.bold))
+                            .foregroundStyle(Color.brand)
+                    }
+                    ShareLink(item: inviteText) {
+                        Label("invite_share", systemImage: "square.and.arrow.up")
+                    }
+                    Button("invite_enter") { redeemCode = ""; showRedeem = true }
+                } header: {
+                    Text("invite_title")
+                } footer: {
+                    Text("invite_reward_desc")
                 }
                 Section {
                     Button { showFeedback = true } label: {
@@ -140,6 +166,21 @@ struct SettingsSheet: View {
             }
             .sheet(isPresented: $showFeedback) { FeedbackSheet() }
             .alert("settings_cache_cleared", isPresented: $showCacheCleared) {
+                Button("confirm", role: .cancel) {}
+            }
+            .alert("invite_enter", isPresented: $showRedeem) {
+                TextField("invite_hint", text: $redeemCode)
+                    .textInputAutocapitalization(.characters)
+                Button("cancel", role: .cancel) {}
+                Button("confirm") {
+                    Task {
+                        let err = await UserRepository.redeemReferral(redeemCode)
+                        redeemMsg = NSLocalizedString(err == nil ? "invite_success" : "invite_fail", comment: "")
+                        showRedeemResult = true
+                    }
+                }
+            }
+            .alert(Text(redeemMsg), isPresented: $showRedeemResult) {
                 Button("confirm", role: .cancel) {}
             }
             .disabled(working)

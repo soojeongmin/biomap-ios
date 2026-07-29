@@ -80,6 +80,7 @@ struct AddObservationView: View {
             }
             .fullScreenCover(isPresented: $showCamera) {
                 CameraPicker { img in
+                    Task { _ = await PhotoSaver.save(img) }
                     if let d = img.jpegData(compressionQuality: 1) {
                         Task { await process(d, fromCamera: true) }
                     }

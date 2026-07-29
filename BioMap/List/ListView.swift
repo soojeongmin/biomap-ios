@@ -96,6 +96,8 @@ struct ListView: View {
         } else {
             ScrollView {
                 LazyVStack(spacing: 12) {
+                    seasonBanner
+                    recentStrip
                     ForEach(filtered) { obs in
                         Button { selected = obs } label: {
                             ObservationRow(observation: obs, displayName: nameByUid[obs.userId].flatMap { $0.isEmpty ? nil : $0 } ?? obs.userName)
@@ -105,6 +107,75 @@ struct ListView: View {
                 }
                 .padding(16)
             }
+        }
+    }
+
+    private var season: (category: String, emoji: String, key: String) {
+        switch Calendar.current.component(.month, from: Date()) {
+        case 3, 4, 5: return ("plant", "🌸", "season_spring")
+        case 6, 7, 8: return ("insect", "🦋", "season_summer")
+        case 9, 10, 11: return ("fungi", "🍄", "season_fall")
+        default: return ("bird", "🐦", "season_winter")
+        }
+    }
+
+    @ViewBuilder private var seasonBanner: some View {
+        if query.trimmingCharacters(in: .whitespaces).isEmpty && filterKey == nil {
+            let s = season
+            Button { withAnimation { filterKey = s.category } } label: {
+                HStack(spacing: 12) {
+                    Text(s.emoji).font(.system(size: 30))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("season_title").font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(.white.opacity(0.9))
+                        Text(LocalizedStringKey(s.key)).font(.system(size: 17, weight: .bold))
+                            .foregroundStyle(.white)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right").foregroundStyle(.white.opacity(0.85))
+                }
+                .padding(16)
+                .background(
+                    LinearGradient(colors: [Color.brand, Color(red: 0, green: 0.66, blue: 0.47)],
+                                   startPoint: .leading, endPoint: .trailing)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private var recent: [Observation] {
+        Array(observations.sorted { $0.timestamp > $1.timestamp }.prefix(12))
+    }
+
+    @ViewBuilder private var recentStrip: some View {
+        if query.trimmingCharacters(in: .whitespaces).isEmpty && filterKey == nil && recent.count >= 3 {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("explore_recent").font(.headline).padding(.horizontal, 2)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(recent) { obs in
+                            Button { selected = obs } label: {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    AsyncImage(url: URL(string: obs.photoUrl)) { img in
+                                        img.resizable().scaledToFill()
+                                    } placeholder: {
+                                        Color(.tertiarySystemFill)
+                                    }
+                                    .frame(width: 118, height: 118).clipped()
+                                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                                    Text(obs.speciesName).font(.caption).lineLimit(1)
+                                        .frame(width: 118, alignment: .leading)
+                                }
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(.bottom, 4)
+                }
+            }
+            .padding(.bottom, 4)
         }
     }
 

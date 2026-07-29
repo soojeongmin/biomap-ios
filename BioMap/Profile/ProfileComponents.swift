@@ -39,6 +39,41 @@ struct ProfileStatsView: View {
     }
 }
 
+struct CollectionTierView: View {
+    let speciesCount: Int
+
+    private static let tiers: [(threshold: Int, emoji: String, nameKey: String)] = [
+        (0, "🌰", "tier_seed"), (10, "🌱", "tier_sprout"), (25, "🌿", "tier_leaf"),
+        (50, "🌳", "tier_tree"), (100, "🌲", "tier_forest"),
+    ]
+
+    var body: some View {
+        let idx = Self.tiers.lastIndex { speciesCount >= $0.threshold } ?? 0
+        let cur = Self.tiers[idx]
+        let next: (threshold: Int, emoji: String, nameKey: String)? =
+            idx + 1 < Self.tiers.count ? Self.tiers[idx + 1] : nil
+        return SectionCard(titleKey: "collection_grade") {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 12) {
+                    Text(cur.emoji).font(.system(size: 34))
+                    Text(LocalizedStringKey(cur.nameKey)).font(.system(size: 20, weight: .bold))
+                    Spacer()
+                    Text(localizedFormat("collection_species", speciesCount))
+                        .font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.brand)
+                }
+                if let next {
+                    let span = next.threshold - cur.threshold
+                    let prog = span > 0 ? Double(speciesCount - cur.threshold) / Double(span) : 1
+                    ProgressView(value: min(max(prog, 0), 1)).tint(Color.brand)
+                    Text(String(format: NSLocalizedString("collection_next", comment: ""),
+                                NSLocalizedString(next.nameKey, comment: ""), next.threshold - speciesCount))
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+            }
+        }
+    }
+}
+
 struct ProfileObservationsView: View {
     let observations: [Observation]
     var onSelect: (String) -> Void = { _ in }

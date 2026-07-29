@@ -17,6 +17,15 @@ enum ObservationRepository {
         }
     }
 
+    static func getById(_ id: String) async -> Observation? {
+        do {
+            let doc = try await db.collection("observations").document(id).getDocument()
+            return try? doc.data(as: Observation.self)
+        } catch {
+            return nil
+        }
+    }
+
     static func getByUser(_ userId: String) async -> [Observation] {
         do {
             let snap = try await db.collection("observations")
@@ -58,6 +67,7 @@ enum ObservationRepository {
             toSave.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         }
         try doc.setData(from: toSave)
+        await UserRepository.touchStreak()
     }
 
     static func addSound(_ observation: Observation, audioData: Data, iconUrl: String) async throws {
@@ -77,6 +87,7 @@ enum ObservationRepository {
             toSave.timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         }
         try doc.setData(from: toSave)
+        await UserRepository.touchStreak()
     }
 
     static func toggleBoom(_ observationId: String) async -> (boomed: Bool, count: Int)? {

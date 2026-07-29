@@ -22,6 +22,7 @@
 		265E0F7DAD88D360B84FE916 /* ObservationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF8499C7F21CFD425397D9 /* ObservationRepository.swift */; };
 		2715512068FE302218CD1359 /* View+AdaptiveDetents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69B433BFBB6FA6DB60D89F /* View+AdaptiveDetents.swift */; };
 		290A7927D1D1023E6A251A22 /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B9A656CC435BBF6636AE /* CommonViews.swift */; };
+		2AE85B4110D04F36D06A2C3A /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDB078439F429964588EF29 /* DeepLinkRouter.swift */; };
 		2C3499B691D1EB8EB33A60AF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881EBBD3B3A1B1D51EB6D94 /* AuthService.swift */; };
 		2E16A2FBEFAB1B13096B79F1 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5B07D18F30E557B5F1253E /* AppVersion.swift */; };
 		31FDAB401352F73ABA8925BE /* border_vine.png in Resources */ = {isa = PBXBuildFile; fileRef = 764FB7C44D7A8C1B30ED4C4C /* border_vine.png */; };
@@ -31,6 +32,7 @@
 		57B409345D110ACD87A8DEC0 /* NicknameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F4FE7128F626A2E63F0B08 /* NicknameSetupView.swift */; };
 		5B579980153042F99B150F6A /* ProfileComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F8968AC2EC2511DCF7606E /* ProfileComponents.swift */; };
 		60D279E63BDF122D22C4E45F /* DuelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E863D889B048FE23B4931 /* DuelView.swift */; };
+		617E0861E576E44F6E7A3F6A /* BioMapWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E15D34E0ACBE5FC40C0BC278 /* BioMapWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		62EAD9725EC3CD57EFB997AD /* AppConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD7FC66D8B89242F6BB830 /* AppConfigRepository.swift */; };
 		6873AEEF66D1EA443B5DC335 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 05F7AB222FFD417B234CFAF5 /* FirebaseAuth */; };
 		6A8973C222CD17CCF9D77BB5 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC25118F0F2688C2F962A1 /* Format.swift */; };
@@ -49,9 +51,11 @@
 		903A9266818E8B8692CED85B /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12E3DAB3B132D252F809968 /* IntroView.swift */; };
 		947FEE342799922644F7096D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD35BDDA525CB00507C32306 /* LoginView.swift */; };
 		9975D90B57462CFA89FC8CF8 /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57D8AC6D5CABD42AEF56BC /* Observation.swift */; };
+		9F4A756E1E5E198BC22FFA23 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917F85720A9BB9AC8A7A37E /* OnboardingView.swift */; };
 		A00EDE3021A753C1741BE807 /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CECD466B5FB42E9E0C55DE /* SettingsSheet.swift */; };
 		A218CA58BA3D7DB9E95F3BBA /* UserProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4C0B2859DECC4ABB53E08C /* UserProfileSheet.swift */; };
 		A34914124AEA8A8ED2643411 /* GuildBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4694C7E062637E4B5FD7D6 /* GuildBorders.swift */; };
+		B772189AE03FF47E51CF0A6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79DD82F71A91F894EC83BD65 /* Localizable.strings */; };
 		B97E11919D2633C3CC1E9415 /* ThemeWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF4F440B3888904F162B65 /* ThemeWeek.swift */; };
 		BC341D8D8F6FB1EB6770CE91 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88163FE90DABECA23542E9B /* Team.swift */; };
 		BDB1856054530BB6C561F6A4 /* IntroSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242DAADE0D8DF7F9A1F9F038 /* IntroSplashView.swift */; };
@@ -66,9 +70,11 @@
 		D75D5A9FC3B18451DF40DC2C /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1075529C09766F1B139E76A /* FriendsView.swift */; };
 		D8856E67F18B6EABD90CB04F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C79BDBA694424E6F72D9D2A /* FirebaseStorage */; };
 		DA23176262C05E58C8F2EDB3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC09F1B51D344DB1A2E7012 /* GoogleSignIn */; };
+		DBAA6EA4575271349982A45D /* BioMapWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E2B101851EE5958AC64FA7 /* BioMapWidget.swift */; };
 		DD0ED501B0AFC60A98CAF7B7 /* FriendChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CC0F91A57CC3442465412 /* FriendChatView.swift */; };
 		E118BFEF58CC58A80805DFA4 /* ShareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0801930E2CEE0EF6BDB57 /* ShareCardView.swift */; };
 		E24BAF37A966052AB6DF7111 /* border_snake.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A63FBF0E7B194FB6A89EFA1 /* border_snake.png */; };
+		EBAFF5E6AB87C7100B074AA5 /* AsyncTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4073D07D56FC261370854 /* AsyncTimeout.swift */; };
 		EC0733A7102D510BC4D78598 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71807E57419D42991E829BA /* ListView.swift */; };
 		EF91D7E1AE6F0AA47869D013 /* FeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F2369F0320BE10D703B86 /* FeedbackRepository.swift */; };
 		F42E5280A007B1B746AA2C02 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 0C04DA919029DE032E0D36AD /* AppIcon.icon */; };
@@ -82,10 +88,37 @@
 		FD2A31E6CEED74C1E0AA78BC /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A86087CC06F33ACB8E51FC6 /* UserRepository.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		82EEFAD78B75303A79120568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEAB9D52242399A1C9357AA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C2B7A312C844079C1E9CC0C;
+			remoteInfo = BioMapWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D687F46185D8D98EC511D3A4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				617E0861E576E44F6E7A3F6A /* BioMapWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00E32F5CBBF2BA8E9A70DE0A /* MissionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRepository.swift; sourceTree = "<group>"; };
+		01E2B101851EE5958AC64FA7 /* BioMapWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioMapWidget.swift; sourceTree = "<group>"; };
+		07E4073D07D56FC261370854 /* AsyncTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTimeout.swift; sourceTree = "<group>"; };
 		0C04DA919029DE032E0D36AD /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		10C3E2910BBFFE056B1F16C9 /* Missions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Missions.swift; sourceTree = "<group>"; };
+		10D163F55DFBBDACA25C0E03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		12C1D69FDDC31CED7166169B /* border_leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border_leaf.png; sourceTree = "<group>"; };
 		136F2369F0320BE10D703B86 /* FeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepository.swift; sourceTree = "<group>"; };
 		1A5B07D18F30E557B5F1253E /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
@@ -106,6 +139,7 @@
 		58B2F27FE5B9BDC6B63B6733 /* ObservationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationDetailView.swift; sourceTree = "<group>"; };
 		5DBC25118F0F2688C2F962A1 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		5E34B9A656CC435BBF6636AE /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
+		5FDB078439F429964588EF29 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
 		61762F7028AB7A7C39A37AA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		625DA9DF4A1360DE3CEBA6B9 /* BioMap.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BioMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4D89C66FB53B4D0DE4C36B /* DecorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorView.swift; sourceTree = "<group>"; };
@@ -123,6 +157,7 @@
 		9039F2B0A6EF629A7B6204A5 /* HeaderPhotoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderPhotoPanel.swift; sourceTree = "<group>"; };
 		948FB35729C9D49F1C255F3E /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		999FD4ACA4AE423CDBC77A6D /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
+		9F7783576BAFD6947C2C077F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A365729EF73C9C5EF02231F0 /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
 		A854D4E612B5D23A486045BE /* border_ladybug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border_ladybug.png; sourceTree = "<group>"; };
 		A8DD2CAD1D7BB06EB1E9CCB7 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
@@ -136,8 +171,10 @@
 		D1075529C09766F1B139E76A /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		D4CECD466B5FB42E9E0C55DE /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		D5CF4F440B3888904F162B65 /* ThemeWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeWeek.swift; sourceTree = "<group>"; };
+		D917F85720A9BB9AC8A7A37E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DCEFC1FED8E325C5E131E72A /* ImageMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMeta.swift; sourceTree = "<group>"; };
 		E0F4FE7128F626A2E63F0B08 /* NicknameSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSetupView.swift; sourceTree = "<group>"; };
+		E15D34E0ACBE5FC40C0BC278 /* BioMapWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = BioMapWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E702D9EBE9BCC0E62C830905 /* TeamRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRepository.swift; sourceTree = "<group>"; };
 		EAFD7FC66D8B89242F6BB830 /* AppConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigRepository.swift; sourceTree = "<group>"; };
 		EE8EE5CADC763C398501AA39 /* AppNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotification.swift; sourceTree = "<group>"; };
@@ -205,6 +242,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		362503C1EA024201C4DD6918 /* BioMapWidget */ = {
+			isa = PBXGroup;
+			children = (
+				01E2B101851EE5958AC64FA7 /* BioMapWidget.swift */,
+				79DD82F71A91F894EC83BD65 /* Localizable.strings */,
+			);
+			path = BioMapWidget;
+			sourceTree = "<group>";
+		};
 		37AAFDCACEA8B2E54B24A3C2 /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				625DA9DF4A1360DE3CEBA6B9 /* BioMap.app */,
+				E15D34E0ACBE5FC40C0BC278 /* BioMapWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				1A5B07D18F30E557B5F1253E /* AppVersion.swift */,
+				07E4073D07D56FC261370854 /* AsyncTimeout.swift */,
 				5E34B9A656CC435BBF6636AE /* CommonViews.swift */,
 				A8DD2CAD1D7BB06EB1E9CCB7 /* ConfettiView.swift */,
 				5DBC25118F0F2688C2F962A1 /* Format.swift */,
@@ -268,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				849F9C00C8FCFB6C3AB02683 /* BioMapApp.swift */,
+				5FDB078439F429964588EF29 /* DeepLinkRouter.swift */,
 				B037EF0F7E6BBE9497C6002F /* MainView.swift */,
 				79046EDA9593C5FF30E15907 /* RootView.swift */,
 			);
@@ -321,6 +370,7 @@
 				F12E3DAB3B132D252F809968 /* IntroView.swift */,
 				FD35BDDA525CB00507C32306 /* LoginView.swift */,
 				E0F4FE7128F626A2E63F0B08 /* NicknameSetupView.swift */,
+				D917F85720A9BB9AC8A7A37E /* OnboardingView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -351,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				57E71D859ADB8E3025F2BF7E /* BioMap */,
+				362503C1EA024201C4DD6918 /* BioMapWidget */,
 				452F232E1F34F99B1BECCE4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -358,6 +409,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4C2B7A312C844079C1E9CC0C /* BioMapWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F56F1418B7B64862F6B075B /* Build configuration list for PBXNativeTarget "BioMapWidget" */;
+			buildPhases = (
+				9CF3DFA98FE17CF2E6DF714B /* Sources */,
+				322E541D32C0A8E64BA6BD54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BioMapWidget;
+			packageProductDependencies = (
+			);
+			productName = BioMapWidget;
+			productReference = E15D34E0ACBE5FC40C0BC278 /* BioMapWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BAA90F1DA75ADA555681BC55 /* BioMap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 090B8403561E08DED2E39D73 /* Build configuration list for PBXNativeTarget "BioMap" */;
@@ -365,10 +434,12 @@
 				BA539C66B41EDE6FF23CCB30 /* Sources */,
 				D833CCD5A16E4294CE8D943C /* Resources */,
 				5809CA2CA58505EAE86A1514 /* Frameworks */,
+				D687F46185D8D98EC511D3A4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				911CB161D8A25015D3F29519 /* PBXTargetDependency */,
 			);
 			name = BioMap;
 			packageProductDependencies = (
@@ -394,6 +465,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					4C2B7A312C844079C1E9CC0C = {
+						DevelopmentTeam = CXF2JL57D8;
+						ProvisioningStyle = Automatic;
+					};
 					BAA90F1DA75ADA555681BC55 = {
 						DevelopmentTeam = CXF2JL57D8;
 						ProvisioningStyle = Automatic;
@@ -420,11 +495,20 @@
 			projectRoot = "";
 			targets = (
 				BAA90F1DA75ADA555681BC55 /* BioMap */,
+				4C2B7A312C844079C1E9CC0C /* BioMapWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		322E541D32C0A8E64BA6BD54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B772189AE03FF47E51CF0A6B /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D833CCD5A16E4294CE8D943C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,6 +527,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9CF3DFA98FE17CF2E6DF714B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBAA6EA4575271349982A45D /* BioMapWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BA539C66B41EDE6FF23CCB30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -452,6 +544,7 @@
 				7EA29F6817692239E3698A94 /* AppNotification.swift in Sources */,
 				0BAF0212EA3E497F5848190D /* AppUser.swift in Sources */,
 				2E16A2FBEFAB1B13096B79F1 /* AppVersion.swift in Sources */,
+				EBAFF5E6AB87C7100B074AA5 /* AsyncTimeout.swift in Sources */,
 				74B0E6FC327FDCE6CD4FEFAC /* AudioCapture.swift in Sources */,
 				2C3499B691D1EB8EB33A60AF /* AuthService.swift in Sources */,
 				F7D3CAF328CAA62C34597E25 /* BioMapApp.swift in Sources */,
@@ -460,6 +553,7 @@
 				42BE9E67F59FACF4929405E6 /* CommunityView.swift in Sources */,
 				75A96CD3184CA21BA41F600E /* ConfettiView.swift in Sources */,
 				021045992AFFBCE093AC09A5 /* DecorView.swift in Sources */,
+				2AE85B4110D04F36D06A2C3A /* DeepLinkRouter.swift in Sources */,
 				BDB26165C311D315DB800D4B /* DuelRepository.swift in Sources */,
 				60D279E63BDF122D22C4E45F /* DuelView.swift in Sources */,
 				EF91D7E1AE6F0AA47869D013 /* FeedbackRepository.swift in Sources */,
@@ -486,6 +580,7 @@
 				9975D90B57462CFA89FC8CF8 /* Observation.swift in Sources */,
 				6E546A87A064CA5ED307266F /* ObservationDetailView.swift in Sources */,
 				265E0F7DAD88D360B84FE916 /* ObservationRepository.swift in Sources */,
+				9F4A756E1E5E198BC22FFA23 /* OnboardingView.swift in Sources */,
 				48F355EB671EFE91F1DEEE66 /* PhotoAvatarPanel.swift in Sources */,
 				5B579980153042F99B150F6A /* ProfileComponents.swift in Sources */,
 				8F42167D455AC870CF651CCB /* ProfileDecor.swift in Sources */,
@@ -509,6 +604,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		911CB161D8A25015D3F29519 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C2B7A312C844079C1E9CC0C /* BioMapWidget */;
+			targetProxy = 82EEFAD78B75303A79120568 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		40DA6F262A6F8D6E1B80F98B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -519,9 +622,64 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		79DD82F71A91F894EC83BD65 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10D163F55DFBBDACA25C0E03 /* en */,
+				9F7783576BAFD6947C2C077F /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		40A12448EB19250F1A06AFB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 32;
+				DEVELOPMENT_LANGUAGE = ko;
+				DEVELOPMENT_TEAM = CXF2JL57D8;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BioMapWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.19.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soojeongmin.biomap.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6EEAF3CF1008F0DB3300FED4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 32;
+				DEVELOPMENT_LANGUAGE = ko;
+				DEVELOPMENT_TEAM = CXF2JL57D8;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BioMapWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.19.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soojeongmin.biomap.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		87FBB15AECCF8E8E18854849 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -530,7 +688,7 @@
 				CODE_SIGN_ENTITLEMENTS = BioMap/BioMap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_LANGUAGE = ko;
 				DEVELOPMENT_TEAM = CXF2JL57D8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -540,7 +698,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.17.0;
+				MARKETING_VERSION = 1.19.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soojeongmin.biomap;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -675,7 +833,7 @@
 				CODE_SIGN_ENTITLEMENTS = BioMap/BioMap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_LANGUAGE = ko;
 				DEVELOPMENT_TEAM = CXF2JL57D8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -685,7 +843,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.17.0;
+				MARKETING_VERSION = 1.19.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soojeongmin.biomap;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -701,6 +859,15 @@
 			buildConfigurations = (
 				FF63533138AB18BBC202D002 /* Debug */,
 				87FBB15AECCF8E8E18854849 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5F56F1418B7B64862F6B075B /* Build configuration list for PBXNativeTarget "BioMapWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EEAF3CF1008F0DB3300FED4 /* Debug */,
+				40A12448EB19250F1A06AFB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

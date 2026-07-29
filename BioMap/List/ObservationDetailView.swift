@@ -29,6 +29,7 @@ struct ObservationDetailView: View {
     var onChanged: () -> Void = {}
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     @State private var suggestions: [Suggestion] = []
     @State private var showSuggest = false
     @State private var working = false
@@ -264,6 +265,8 @@ struct ObservationDetailView: View {
                     }
                 }
 
+                learnMoreSection
+
                 commentsSection
 
                 actionButtons
@@ -302,6 +305,34 @@ struct ObservationDetailView: View {
                 await saveEdit()
             }
             .largeSheet()
+        }
+    }
+
+    private var learnMoreQuery: String {
+        let sci = observation.scientificName.trimmingCharacters(in: .whitespaces)
+        return (sci.isEmpty ? observation.speciesName : sci)
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    }
+
+    @ViewBuilder private var learnMoreSection: some View {
+        if !learnMoreQuery.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("learn_more").font(.headline)
+                HStack(spacing: 10) {
+                    Button {
+                        if let u = URL(string: "https://ko.wikipedia.org/w/index.php?search=\(learnMoreQuery)") { openURL(u) }
+                    } label: {
+                        Label("wiki_link", systemImage: "book.fill").frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(OutlineBrandButton())
+                    Button {
+                        if let u = URL(string: "https://www.inaturalist.org/search?q=\(learnMoreQuery)") { openURL(u) }
+                    } label: {
+                        Label("iNaturalist", systemImage: "leaf.fill").frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(OutlineBrandButton())
+                }
+            }
         }
     }
 

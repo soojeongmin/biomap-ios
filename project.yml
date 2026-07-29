@@ -23,8 +23,8 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.soojeongmin.biomap
-        MARKETING_VERSION: "1.17.0"
-        CURRENT_PROJECT_VERSION: "30"
+        MARKETING_VERSION: "1.19.0"
+        CURRENT_PROJECT_VERSION: "32"
         INFOPLIST_FILE: BioMap/Info.plist
         TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: "NO"
@@ -56,3 +56,25 @@ targets:
         product: GoogleSignIn
       - package: GoogleSignIn
         product: GoogleSignInSwift
+      - target: BioMapWidget
+        embed: true
+  BioMapWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: BioMapWidget
+        excludes:
+          - Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.soojeongmin.biomap.widget
+        MARKETING_VERSION: "1.19.0"
+        CURRENT_PROJECT_VERSION: "32"
+        INFOPLIST_FILE: BioMapWidget/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        SWIFT_VERSION: "5.0"
+        DEVELOPMENT_LANGUAGE: ko
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: CXF2JL57D8
+        SKIP_INSTALL: "YES"
+        TARGETED_DEVICE_FAMILY: "1,2"

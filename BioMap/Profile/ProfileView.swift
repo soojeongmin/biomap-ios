@@ -44,6 +44,7 @@ struct ProfileView: View {
         ScrollView {
             VStack(spacing: 20) {
                 header(topInset: geo.safeAreaInsets.top)
+                CollectionTierView(speciesCount: speciesCount)
                 ProfileStatsView(speciesCount: speciesCount, days: days, level: level, xp: xp)
                 ProfileObservationsView(observations: myObservations) { galleryTarget = GalleryTarget(key: $0) }
             }
@@ -190,6 +191,14 @@ struct ProfileView: View {
                 }
                 if let email = auth.user?.email {
                     Text(email).font(.subheadline).foregroundStyle(.secondary)
+                }
+                if let s = appUser?.streak, s > 0 {
+                    Text(String(format: NSLocalizedString("streak_days", comment: ""), s))
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(.orange)
+                        .padding(.horizontal, 12).padding(.vertical, 5)
+                        .background(Capsule().fill(Color.orange.opacity(0.15)))
+                        .padding(.top, 4)
                 }
             }
         }

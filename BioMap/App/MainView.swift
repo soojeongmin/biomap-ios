@@ -5,7 +5,7 @@ enum BioTab: Hashable {
 }
 
 struct MainView: View {
-    @State private var tab: BioTab = .map
+    @State private var tab: BioTab = .list
     @State private var showAdd = false
     @State private var refreshID = 0
     @State private var communityTab = 2
@@ -101,6 +101,8 @@ struct MainView: View {
                 let all = await ObservationRepository.getAll()
                 if let obs = all.first(where: { $0.id == id }) { detailObs = obs }
             }
+        case .add:
+            showAdd = true
         }
     }
 }

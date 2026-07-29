@@ -7,22 +7,58 @@ import FirebaseFunctions
 enum UserRepository {
     private static var db: Firestore { Firestore.firestore() }
 
+    static func referralCode(for uid: String) -> String {
+        String(uid.prefix(6)).uppercased()
+    }
+
+    static func epochDay() -> Int {
+        let tz = Double(TimeZone.current.secondsFromGMT())
+        return Int((Date().timeIntervalSince1970 + tz) / 86400)
+    }
+
+    @discardableResult
+    static func touchStreak() async -> Int {
+        guard let uid = Auth.auth().currentUser?.uid else { return 0 }
+        let ref = db.collection("users").document(uid)
+        let today = epochDay()
+        let snap = try? await ref.getDocument()
+        let last = snap?.get("lastActiveDay") as? Int ?? 0
+        let prev = snap?.get("streak") as? Int ?? 0
+        if last == today { return prev }
+        let streak = (last == today - 1) ? prev + 1 : 1
+        try? await ref.updateData(["lastActiveDay": today, "streak": streak])
+        return streak
+    }
+
     static func upsert(_ user: User) async {
         let ref = db.collection("users").document(user.uid)
+        let code = referralCode(for: user.uid)
         do {
             let snapshot = try await ref.getDocument()
             if snapshot.exists {
-                try await ref.setData(["photoUrl": user.photoURL?.absoluteString ?? ""], merge: true)
+                try await ref.setData(["photoUrl": user.photoURL?.absoluteString ?? "", "referralCode": code], merge: true)
             } else {
                 try await ref.setData([
                     "uid": user.uid,
                     "name": "",
                     "photoUrl": user.photoURL?.absoluteString ?? "",
                     "teamId": "",
+                    "referralCode": code,
                     "createdAt": Int64(Date().timeIntervalSince1970 * 1000),
                 ])
             }
         } catch {
+        }
+    }
+
+    static func redeemReferral(_ code: String) async -> String? {
+        do {
+            _ = try await Functions.functions().httpsCallable("redeemReferral")
+                .call(["code": code.trimmingCharacters(in: .whitespaces).uppercased()])
+            return nil
+        } catch {
+            let ns = error as NSError
+            return ns.userInfo["message"] as? String ?? ns.localizedDescription
         }
     }
 

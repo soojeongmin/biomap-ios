@@ -117,6 +117,7 @@ struct UserProfileSheet: View {
                     friendButton
                 }
             }
+            CollectionTierView(speciesCount: speciesCount)
             ProfileStatsView(speciesCount: speciesCount, days: days, level: level, xp: xp)
             ProfileObservationsView(observations: userObservations) { target = $0 }
         }

@@ -49,10 +49,20 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.411293910366-l3lfka1j44dkhepbgfdnp5ekr2j33gjg</string>
-			</array>
-		</dict>
-	</array>
+									<string>com.googleusercontent.apps.411293910366-l3lfka1j44dkhepbgfdnp5ekr2j33gjg</string>
+				</array>
+			</dict>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLName</key>
+				<string>com.soojeongmin.biomap.deeplink</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>biomap</string>
+				</array>
+			</dict>
+		</array>
 	<key>NSCameraUsageDescription</key>
 	<string>관찰한 생물의 사진을 촬영하기 위해 카메라를 사용합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

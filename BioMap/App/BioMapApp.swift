@@ -75,13 +75,19 @@ final class AppDelegate: NSObject, UIApplicationDelegate, MessagingDelegate, UNU
 struct BioMapApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var auth = AuthService()
+    @StateObject private var deepLink = DeepLinkRouter()
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environmentObject(auth)
+                .environmentObject(deepLink)
                 .onOpenURL { url in
-                    GIDSignIn.sharedInstance.handle(url)
+                    if url.scheme == "biomap" {
+                        deepLink.handle(url)
+                    } else {
+                        GIDSignIn.sharedInstance.handle(url)
+                    }
                 }
                 .task(id: auth.user?.uid) {
                     guard let uid = auth.user?.uid else { return }
