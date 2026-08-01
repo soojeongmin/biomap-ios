@@ -23,8 +23,8 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.soojeongmin.biomap
-        MARKETING_VERSION: "1.19.0"
-        CURRENT_PROJECT_VERSION: "32"
+        MARKETING_VERSION: "1.19.1"
+        CURRENT_PROJECT_VERSION: "34"
         INFOPLIST_FILE: BioMap/Info.plist
         TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: "NO"
@@ -68,8 +68,8 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.soojeongmin.biomap.widget
-        MARKETING_VERSION: "1.19.0"
-        CURRENT_PROJECT_VERSION: "32"
+        MARKETING_VERSION: "1.19.1"
+        CURRENT_PROJECT_VERSION: "34"
         INFOPLIST_FILE: BioMapWidget/Info.plist
         GENERATE_INFOPLIST_FILE: "NO"
         SWIFT_VERSION: "5.0"
