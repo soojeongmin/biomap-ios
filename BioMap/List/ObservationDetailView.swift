@@ -32,6 +32,7 @@ struct ObservationDetailView: View {
     @Environment(\.openURL) private var openURL
     @State private var suggestions: [Suggestion] = []
     @State private var showSuggest = false
+    @State private var showZoom = false
     @State private var working = false
     @State private var selectedUser: UserRef?
     @State private var showShareCard = false
@@ -210,6 +211,12 @@ struct ObservationDetailView: View {
                         }
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .contentShape(RoundedRectangle(cornerRadius: 16))
+                    .onTapGesture {
+                        if !observation.isSound && !observation.photoUrl.isEmpty {
+                            showZoom = true
+                        }
+                    }
 
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
@@ -279,6 +286,9 @@ struct ObservationDetailView: View {
             suggestions = await loadSuggestions()
             comments = await ObservationRepository.getComments(observation.id)
             locationText = await reverseGeocodeDong(observation.latitude, observation.longitude)
+        }
+        .fullScreenCover(isPresented: $showZoom) {
+            ZoomableImageView(url: observation.photoUrl) { showZoom = false }
         }
         .sheet(isPresented: $showSuggest) {
             SuggestSheet { candidate in

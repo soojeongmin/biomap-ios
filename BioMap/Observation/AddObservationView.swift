@@ -153,9 +153,20 @@ struct AddObservationView: View {
         ScrollView {
             VStack(spacing: 16) {
                 if let uiImage {
-                    Image(uiImage: uiImage).resizable().scaledToFill()
-                        .frame(width: 220, height: 220).clipped()
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    ZStack(alignment: .topTrailing) {
+                        Image(uiImage: uiImage).resizable().scaledToFill()
+                            .frame(width: 220, height: 220).clipped()
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                        Button { rotateImage() } label: {
+                            Image(systemName: "rotate.right")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundStyle(.white)
+                                .padding(9)
+                                .background(.black.opacity(0.45), in: Circle())
+                        }
+                        .padding(8)
+                    }
+                    .frame(width: 220, height: 220)
                 } else if audioData != nil {
                     soundPreviewCard
                 }
@@ -352,6 +363,12 @@ struct AddObservationView: View {
         customResults = []; customPicked = nil; customSearching = false
     }
 
+    private func rotateImage() {
+        guard let img = uiImage, let rotated = img.rotatedRight90() else { return }
+        uiImage = rotated
+        imageData = compressForUpload(rotated) ?? rotated.jpegData(compressionQuality: 0.9)
+    }
+
     private func save() async {
         guard hasMedia else { return }
         saving = true
@@ -463,6 +480,21 @@ struct CameraPicker: UIViewControllerRepresentable {
 
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             picker.dismiss(animated: true)
+        }
+    }
+}
+
+extension UIImage {
+    func rotatedRight90() -> UIImage? {
+        let newSize = CGSize(width: size.height, height: size.width)
+        let format = UIGraphicsImageRendererFormat.default()
+        format.scale = scale
+        let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+        return renderer.image { ctx in
+            let c = ctx.cgContext
+            c.translateBy(x: newSize.width / 2, y: newSize.height / 2)
+            c.rotate(by: .pi / 2)
+            draw(in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
         }
     }
 }
